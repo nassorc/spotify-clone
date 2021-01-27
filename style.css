@@ -1,0 +1,186 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+:root {
+  --textDefault: #ffffff;
+  --textSecondary: #d4d3d3;
+  --default: #141414;
+  --secondary: #1db954;
+  --lightDefault: rgb(44, 44, 44);
+  --middleDefault: rgb(134, 48, 48);
+}
+.content {
+  display: flex;
+}
+header {
+  height: 100vh;
+  width: 180px;
+  min-width: 180px;
+  position: relative;
+  background-color: var(--default);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 90px;
+}
+.meatball {
+  width: 65px;
+  min-height: 55px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.meatball > span {
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  border-radius: 50%;
+}
+.meatball > span:not(last-child) {
+  margin-right: 2px;
+}
+nav {
+  width: 100%;
+  height: 125px;
+}
+.navlinks {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.navlink__wrapper img {
+  width: 14%;
+  margin-right: 18px;
+}
+.navlink__wrapper {
+  width: 100%;
+  padding-left: 22px;
+  display: flex;
+  align-items: center;
+}
+.navlink__wrapper > li {
+  list-style: none;
+}
+.navlink > a {
+  text-decoration: none;
+  color: var(--textSecondary);
+  font-size: 14px;
+}
+.navlink__wrapper:hover a {
+  color: var(--textDefault);
+}
+.library {
+  width: 100%;
+  height: 50%;
+}
+.header__end {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+}
+.playlist__add {
+  width: 100%;
+  height: 30%;
+}
+.playlist__album {
+  width: 100%;
+  height: 70%;
+}
+.header__space {
+  width: 100%;
+  height: 104px;
+}
+
+.content__middle {
+  background-color: var(--middleDefault);
+  width: 100%;
+}
+
+.topbar {
+  width: 100%;
+  height: 2.6rem;
+  display: flex;
+  align-items: Center;
+}
+.btn--container {
+  width: 5rem;
+  display: flex;
+  justify-content: space-around;
+}
+.back > span,
+.next > span {
+  width: 14px;
+  height: 2px;
+  background-color: var(--textSecondary);
+  display: flex;
+  margin: 6px;
+}
+.back:hover > span,
+.next:hover > span {
+  background-color: var(--textDefault);
+}
+.back > span:first-child {
+  transform-origin: center;
+  transform: rotate(-35deg);
+}
+.back > span:last-child {
+  transform-origin: center;
+  transform: rotate(35deg);
+}
+.next > span:first-child {
+  transform-origin: center;
+  transform: rotate(35deg);
+}
+.next > span:last-child {
+  transform-origin: center;
+  transform: rotate(-35deg);
+}
+.search--input {
+  position: relative;
+}
+.search {
+  width: 170px;
+  height: 22px;
+  padding-left: 20px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+}
+label {
+  color: black;
+  font-size: 14px;
+  position: absolute;
+  left: 20px;
+  top: 3px;
+  pointer-events: none;
+}
+
+.footer {
+  width: 100%;
+  background-color: var(--lightDefault);
+  height: 90px;
+  display: fixed;
+  position: absolute;
+  bottom: 0;
+}
+.parentdelete {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+.delete {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+}
