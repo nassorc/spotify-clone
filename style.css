@@ -7,18 +7,22 @@
 :root {
   --textDefault: #ffffff;
   --textSecondary: #d4d3d3;
-  --default: #141414;
+  --default: #131212;
   --secondary: #1db954;
   --lightDefault: rgb(44, 44, 44);
+  --lightSecondary: rgb(31, 31, 31);
   --middleDefault: rgb(134, 48, 48);
+
+  --buttonLight: rgb(88, 88, 88);
+  --buttonDark: rgb(211, 47, 47);
 }
 .content {
   display: flex;
 }
 header {
   height: 100vh;
-  width: 180px;
-  min-width: 180px;
+  width: 175px;
+  min-width: 175px;
   position: relative;
   background-color: var(--default);
   display: flex;
@@ -26,13 +30,14 @@ header {
   padding-bottom: 90px;
 }
 .meatball {
+  margin-bottom: 8px;
+  margin-left: 4px;
   width: 65px;
   min-height: 55px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 8px;
 }
 .meatball > span {
   width: 5px;
@@ -41,11 +46,12 @@ header {
   border-radius: 50%;
 }
 .meatball > span:not(last-child) {
-  margin-right: 2px;
+  margin-right: 4px;
 }
 nav {
   width: 100%;
   height: 125px;
+  margin-bottom: 24px;
 }
 .navlinks {
   width: 100%;
@@ -62,7 +68,7 @@ nav {
 }
 .navlink__wrapper {
   width: 100%;
-  padding-left: 22px;
+  padding-left: 18px;
   display: flex;
   align-items: center;
 }
@@ -80,7 +86,20 @@ nav {
 .library {
   width: 100%;
   height: 50%;
+  min-height: 100px;
+  padding-left: 18px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-color: var(--lightDefault) var(--default);
 }
+
+.library h2 {
+  color: var(--textSecondary);
+  font-size: 11px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
 .header__end {
   width: 100%;
   height: 240px;
@@ -89,19 +108,83 @@ nav {
 }
 .playlist__add {
   width: 100%;
-  height: 30%;
+  height: 62px;
+  padding-left: 18px;
+  box-shadow: 0px -1px 0px 0px var(--textSecondary);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
+
+.playlist__add h2 {
+  color: var(--textSecondary);
+  font-size: 12px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+.playlist__add img {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+}
+
+.playlist__add:hover h2 {
+  color: var(--textDefault);
+}
+
 .playlist__album {
+  position: relative;
   width: 100%;
-  height: 70%;
+  height: 175px;
+  background: url(https://unsplash.it/175/175);
 }
+
+.btn--playlist__minimize {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+  right: 10px;
+  top: 6px;
+  display: flex;
+  cursor: pointer;
+}
+
+.btn--playlist__minimize > span {
+  width: 11px;
+  height: 2px;
+  transition: 0.2s ease-in-out;
+}
+.btn--playlist__minimize > span:first-child {
+  position: absolute;
+  top: 13px;
+  left: 16%;
+  transform: rotate(48deg);
+}
+.btn--playlist__minimize > span:last-child {
+  position: absolute;
+  top: 13px;
+  right: 16%;
+  transform: rotate(-48deg);
+}
+.playlist__album:hover .btn--playlist__minimize {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.playlist__album:hover span {
+  background-color: white;
+}
+
 .header__space {
   width: 100%;
   height: 104px;
 }
 
+/* Content MIDDLE =================================== */
 .content__middle {
-  background-color: var(--middleDefault);
+  position: relative;
+  background-color: var(--default);
   width: 100%;
 }
 
@@ -110,23 +193,32 @@ nav {
   height: 2.6rem;
   display: flex;
   align-items: Center;
+  justify-content: space-between;
+  background-color: rgba(1, 1, 1, 0);
+}
+.group1 {
+  margin-top: 8px;
+  display: flex;
+  width: 280px;
+  flex: 1;
+  z-index: 2;
 }
 .btn--container {
   width: 5rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+}
+.next {
+  margin-left: 12px;
 }
 .back > span,
 .next > span {
-  width: 14px;
+  width: 11px;
   height: 2px;
-  background-color: var(--textSecondary);
-  display: flex;
-  margin: 6px;
-}
-.back:hover > span,
-.next:hover > span {
   background-color: var(--textDefault);
+  display: flex;
+  margin: 4px;
 }
 .back > span:first-child {
   transform-origin: center;
@@ -144,23 +236,196 @@ nav {
   transform-origin: center;
   transform: rotate(-35deg);
 }
+
 .search--input {
   position: relative;
 }
 .search {
-  width: 170px;
-  height: 22px;
-  padding-left: 20px;
+  width: 180px;
+  height: 23px;
+  padding-left: 24px;
   border-radius: 12px;
   border: none;
   outline: none;
 }
 label {
-  color: black;
-  font-size: 14px;
+  color: var(--default);
+  font-size: 13px;
   position: absolute;
-  left: 20px;
+  left: 24px;
+  top: 5px;
+  pointer-events: none;
+}
+.img--search {
+  width: 10%;
+  position: absolute;
+  left: 4px;
   top: 3px;
+}
+
+.group2 {
+  margin-right: 18px;
+  margin-top: 8px;
+  width: 280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.group2 button {
+  width: 110px;
+  height: 24px;
+  background-color: rgb(31, 31, 31);
+  border: 1px solid var(--textSecondary);
+  border-radius: 26px;
+  outline: none;
+  color: var(--textDefault);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.user {
+  display: flex;
+  width: 100px;
+  justify-content: space-between;
+  align-items: center;
+}
+.user h4 {
+  color: var(--textDefault);
+  font-size: 14px;
+  font-weight: lighter;
+}
+.btn__upgrade:hover {
+  transform: scale(1.1);
+}
+
+.btn__others {
+  position: relative;
+  width: 35px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn__others > span {
+  width: 11px;
+  height: 2px;
+  background-color: white;
+}
+.btn__others > span:first-child {
+  position: absolute;
+  left: 24%;
+  transform: rotate(48deg);
+}
+.btn__others > span:last-child {
+  position: absolute;
+  right: 25%;
+  transform: rotate(-48deg);
+}
+
+.group3 {
+  display: flex;
+  height: 100%;
+  width: 13;
+  z-index: 3;
+}
+.btn--minimize,
+.btn--resize,
+.btn--exit {
+  background-color: var(--lightSecondary);
+  height: 30px;
+  width: 45px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn--minimize > span {
+  background-color: var(--textDefault);
+  width: 11px;
+  height: 1px;
+  border-radius: 1px;
+}
+.btn--resize {
+  position: relative;
+}
+.btn--resize > span {
+  background-color: var(--textDefault);
+  width: 9px;
+  height: 1px;
+}
+.btn--resize > span:first-child {
+  transform: rotate(90deg);
+  position: absolute;
+  left: 30%;
+}
+.btn--resize > span:nth-child(2) {
+  position: absolute;
+  left: 50%;
+  top: 37%;
+  transform: translate(-50%, -63%);
+}
+.btn--resize > span:nth-child(3) {
+  transform: rotate(90deg);
+  position: absolute;
+  right: 30%;
+}
+.btn--resize > span:last-child {
+  position: absolute;
+  bottom: 34%;
+}
+
+.btn--exit {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.btn--exit > span {
+  background-color: var(--textSecondary);
+  width: 16px;
+  height: 1px;
+}
+.btn--exit > span:first-child {
+  position: absolute;
+  top: 50%;
+  transform: rotate(45deg);
+}
+.btn--exit > span:last-child {
+  transform: rotate(-45deg);
+}
+.btn--minimize:hover,
+.btn--resize:hover {
+  background-color: var(--buttonLight);
+}
+.btn--exit:hover {
+  background-color: var(--buttonDark);
+}
+
+/* MAIN ================================================= */
+.main--parent {
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+.main--child {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+}
+.cover {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(to bottom, rgb(219, 130, 130), transparent);
+  background-image: linear-gradient(to bottom, rgb(219, 130, 130));
+  top: 0px;
+  left: 0px;
+  z-index: 1;
   pointer-events: none;
 }
 
